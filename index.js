@@ -97,12 +97,11 @@
 // ** Routes 
 // *******************************************************************
 
-  /* To check if the API is running */
-
   app.get('/favicon.ico', (req,res) => {
     res.status(404)
     res.send('no favicon')
   })
+  /* To check if the API is running */
   app.get('/ping', (req,res) => {
     console.log('ping')
     res.status(200)
