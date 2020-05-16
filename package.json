@@ -1,0 +1,38 @@
+{
+  "name": "mssql_api",
+  "version": "1.0.0",
+  "description": "mssql restful api ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Appandor",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "date-and-time": "^0.10.0",
+    "exceljs": "^3.4.0",
+    "mssql": "^6.0.0",
+    "node-windows": "^1.0.0-beta.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appandor/mssql_api.git"
+  },
+  "keywords": [
+    "mssql",
+    "rest",
+    "api",
+    "post",
+    "get",
+    "put",
+    "delete"
+  ],
+  "bugs": {
+    "url": "https://github.com/appandor/mssql_api/issues"
+  },
+  "homepage": "https://github.com/appandor/mssql_api#readme"
+}
