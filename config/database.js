@@ -1,10 +1,10 @@
 const config = {
-  user:       USER     || process.env.USER     || 'sa',
-  password:   PASSWORD || process.env.PASSWORD || 'default', 
-  database:   DB       || process.env.DB       || 'master',
-  server:     HOST     || process.env.HOST     || '127.0.0.1',
+  user:       process.env.USER     || 'sa',
+  password:   process.env.PASSWORD || 'default', 
+  database:   process.env.DB       || 'master',
+  server:     process.env.HOST     || '127.0.0.1',
   options: {
-    database: HOST     || process.env.HOST     || '127.0.0.1',
+    database: process.env.HOST     || '127.0.0.1',
     encrypt: false
   },
   requestTimeout: 30000
