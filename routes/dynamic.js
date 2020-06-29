@@ -47,8 +47,8 @@ router.route('/:route').post((req,res) => {
           res.send(err)
         } else {
           respond.result = dbResponse
-          logger.log ("ROUTER POST RES:", ip, 'EP:', req.headers.host + req.url, 'Status:', 201)
-          res.status(201)
+          logger.log ("ROUTER POST RES:", ip, 'EP:', req.headers.host + req.url, 'Status:', 200)
+          res.status(200)
           respond.location = req.url+uuid
           res.send (respond) 
           //console.log(req.url)
