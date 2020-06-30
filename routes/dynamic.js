@@ -216,13 +216,19 @@ router.route('/:route/:uuid?').put((req,res) => {
   /* Parse body parameter to columns for update */
   var updateSQL = "UPDATE "+req.params.route+" SET "
   var sqlKeyValues = ""
+  
   console.log('body:',req.body)
+  console.log('params:',req.params)
+  console.log('query:',req.query)
+
   for(var key in req.body){ 
-    console.log('KEY:',key, 'VALUE;', req.body[key])
+    console.log(' - KEY:',key, 'VALUE;', req.body[key])
     sqlKeyValues += "["+key+"]='"+req.body[key]+"',"
   }
   var where = ''
+  console.log('NEXT IS CHECK _uuid')
   if(req.params.uuid) {
+    console.log('uuid:', req.params.uuid)
     where = "_uuid = '"+req.params.uuid+"'"
   } else {
     console.log('query:',req.query)
