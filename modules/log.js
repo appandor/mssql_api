@@ -1,6 +1,6 @@
 const fs = require('fs');
-const logfile = "rest_api.log"
-const logJson = "rest_api_json.log"
+const logfile = "/var/log/rest_api.log"
+const logJson = "/var/log/rest_api_json.log"
 const date = require('date-and-time')
 
 function Log() {
@@ -11,8 +11,8 @@ function Log() {
   }
 
   //console.log(logDate,"=>", msg)
-/*
   fs.appendFile(logfile,logDate + " =>" + msg + '\r\n', (err) => {})
+/*
   msgJson = { datetime: logDate, message: msg }
   fs.appendFile(logJson,JSON.stringify(msgJson) + ',\r\n', (err) => {})
 */  

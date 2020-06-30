@@ -207,6 +207,7 @@ router.route('/:route/:uuid?').get((req,res) => {
 // ** PUT
 // *******************************************************************
 router.route('/:route/:uuid?').put((req,res) => {
+  console.log('PUT')
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
   logger.log ("ROUTER PUT REQ:", ip, 'EP:', req.headers.host + req.url)  
   const respond = {}
@@ -215,14 +216,16 @@ router.route('/:route/:uuid?').put((req,res) => {
   /* Parse body parameter to columns for update */
   var updateSQL = "UPDATE "+req.params.route+" SET "
   var sqlKeyValues = ""
+  console.log('body:',req.body)
   for(var key in req.body){ 
+    console.log('KEY:',key, 'VALUE;', req.body[key])
     sqlKeyValues += "["+key+"]='"+req.body[key]+"',"
   }
   var where = ''
   if(req.params.uuid) {
     where = "_uuid = '"+req.params.uuid+"'"
   } else {
-    //console.log('query:',req.query)
+    console.log('query:',req.query)
     for (var queryParam in req.query) {
       //console.log('queryparam:',queryParam)
       where+= queryParam+"='"+req.query[queryParam]+"' AND "
