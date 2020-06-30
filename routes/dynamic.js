@@ -216,7 +216,7 @@ router.route('/:route/:uuid?').put((req,res) => {
   /* Parse body parameter to columns for update */
   var updateSQL = "UPDATE "+req.params.route+" SET "
   var sqlKeyValues = ""
-  
+
   console.log('body:',req.body)
   console.log('params:',req.params)
   console.log('query:',req.query)
@@ -227,21 +227,29 @@ router.route('/:route/:uuid?').put((req,res) => {
   }
   var where = ''
   console.log('NEXT IS CHECK _uuid')
+  console.log('1')
   if(req.params.uuid) {
+    console.log('2')
     console.log('uuid:', req.params.uuid)
+    console.log('3')
     where = "_uuid = '"+req.params.uuid+"'"
+    console.log('4')
   } else {
+    console.log('5')
     console.log('query:',req.query)
+    console.log('6')
     for (var queryParam in req.query) {
+      console.log('7')
       //console.log('queryparam:',queryParam)
       where+= queryParam+"='"+req.query[queryParam]+"' AND "
     }
+    console.log('8')
     where = where.slice(0, -5)
   }
   // wenn kein queryparam angegeben kommt fehler weil where leer ist. hier noch ein if einbauen
   updateSQL += sqlKeyValues.slice(0, -1) + " WHERE "+where
   respond.sql = updateSQL
-  //console.log(respond.sql)
+  console.log(respond.sql)
   db.QuerySQL(respond.sql, (dbResponse,err) => {
     if (err) {
       logger.log ("ROUTER PUT RES:", ip, 'EP:', req.headers.host + req.url, 'Status:', 500, 'ERROR:', err)
