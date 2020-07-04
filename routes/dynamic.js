@@ -10,6 +10,7 @@ const logger  = require('../modules/log')
 // *******************************************************************
 
 router.route('/:route').post((req,res) => {
+  console.log('POST')
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
   logger.log ("ROUTER POST REQ:", ip, 'EP:', req.headers.host + req.url)  
   if (req.params.id) { req.query["id"] = req.params.id }
@@ -39,7 +40,7 @@ router.route('/:route').post((req,res) => {
       }
       insertSQL += sqlKeys+"_uuid) "+sqlValues+"'"+uuid+"')" 
       respond.sql = insertSQL
-      //console.log(respond.sql)
+      console.log(respond.sql)
       db.QuerySQL(respond.sql, (dbResponse,err) => {
         if (err) {
           logger.log ("ROUTER POST RES:", ip, 'EP:', req.headers.host + req.url, 'Status:', 500, 'ERROR:', err)
@@ -227,19 +228,12 @@ router.route('/:route/:uuid?').put((req,res) => {
   }
   var where = ''
   console.log('NEXT IS CHECK _uuid')
-  console.log('1')
   if(req.params.uuid) {
-    console.log('2')
     console.log('uuid:', req.params.uuid)
-    console.log('3')
     where = "_uuid = '"+req.params.uuid+"'"
-    console.log('4')
   } else {
-    console.log('5')
     console.log('query:',req.query)
-    console.log('6')
     for (var queryParam in req.query) {
-      console.log('7')
       //console.log('queryparam:',queryParam)
       where+= queryParam+"='"+req.query[queryParam]+"' AND "
     }
