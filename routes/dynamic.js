@@ -22,8 +22,8 @@ router.route('/:route').post((req,res) => {
       res.status(500)
       res.send(err)
     } else {
-      //console.log('OK:', dbResponse.recordset[0]._uuid)
-      //console.log('BODY:', req.body)
+      console.log('OK:', dbResponse.recordset[0]._uuid)
+      console.log('BODY:', req.body)
       const respond = {}
       respond.result = 'Legt ein Datensatz in der Tabelle '+req.params.route+' an.'
       respond.data = {}
